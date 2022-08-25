@@ -2,13 +2,16 @@ const express = require('express')
 const cors = require('cors')
 const fs = require("fs") 
 
+
+
 // Load data from JSON file into memory
 const rawData = fs.readFileSync("server/units.json")
 const data = JSON.parse(rawData)
 
 const app = express() 
 app.use(cors())
-app.use(express.json()) 
+//app.use(express.json()) 
+app.use(express.static("build"))
 
 
 app.get('/api/units', (req, res) => {

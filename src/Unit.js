@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import UnitForm from './UnitForm'
 
+/**
+ * 
+ * @param {*} unit
+ * @param {Function} deleteFn
+ * @param {Function} updateFn
+ * @returns {}
+ */
 const Unit = ({unit, deleteFn, updateFn}) => {
 
   const [editing, setEditing] = useState(false)

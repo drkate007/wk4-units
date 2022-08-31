@@ -31,6 +31,9 @@ app.post('/api/units', (req, res) => {
   res.json(newUnit)
 })
 
+/**
+ * Route get
+ */
 app.get('/api/units/:id', (req, res) => {
   const id = Number(req.params.id)
   const unit = data.units.filter(u => u.id === id)[0]
@@ -65,7 +68,7 @@ app.put('/api/units/:id', (req, res) => {
 })
 
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })

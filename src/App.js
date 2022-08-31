@@ -3,22 +3,37 @@ import UnitForm from "./UnitForm.js"
 import Unit from "./Unit.js"
 import axios from 'axios'
 
-
+/**
+ * App Module
+ * @module /src/app.js
+ * 
+ * @author Steve Cassidy
+ * @version 4.1
+ * @description The main component in the Units applictaion
+ */
 const App = () => {
   
   const [units, setUnits] = useState([])
 
+  /**
+   * 
+   * @param {*} newUnit 
+   */
   const addNewUnit = (newUnit) => {
 
-    axios.post("http://localhost:3001/api/units", newUnit)
+    axios.post("/api/units", newUnit)
     .then(response => {
       console.log("POST response", response)
       setUnits([...units, response.data])
     })
   }
 
+  /**
+   * Fetched all units from database
+   * @param {}
+   */
   const fetchUnits = () => {
-    axios.get("http://localhost:3001/api/units")
+    axios.get("/api/units")
     .then((response) => {
       console.log("response: ", response)
       setUnits(response.data)
@@ -29,9 +44,16 @@ const App = () => {
     fetchUnits()
   },[])
 
+  /**
+   * 
+   *  Deletes an unit and then updates 
+   * the local copy
+   * @param {*} unit 
+   * 
+   */
   const deleteUnit = (unit) => {
     console.log("delete", unit)
-    axios.delete("http://localhost:3001/api/units/" + unit.id)
+    axios.delete("/api/units/" + unit.id)
     .then((response) => {
       console.log("delete succeeded")
       // delete local copy
@@ -47,7 +69,7 @@ const App = () => {
 
   const updateUnit = (unit) => {
     console.log("updating unit", unit)
-    axios.put("http://localhost:3001/api/units/" + unit.id, unit)
+    axios.put("/api/units/" + unit.id, unit)
     .then((response) => {
       console.log("RESPONSE", response)
       fetchUnits()

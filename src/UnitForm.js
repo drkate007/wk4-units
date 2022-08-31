@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
+/**
+ * @component
+ * @param {Function} updateFn
+ * @param {*} unitInfo
+ * @returns {}
+ */
 const UnitForm = ({updateFn, unitInfo}) => {
 
     let initialState = unitInfo
